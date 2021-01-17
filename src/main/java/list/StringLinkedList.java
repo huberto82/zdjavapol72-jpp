@@ -18,28 +18,31 @@ public class StringLinkedList {
 
     public boolean add(String item, int index){
         StringNode node = new StringNode(item, null);
+        //indeksy ujemne, niemożliwe dodanie
         if(index < 0){
             return false;
         }
         StringNode previous = getAt(index - 1);
+        //brak węzła poprzedniego, gdy nie wstawiamy na początek, niemożliwe dodanie
         if(previous == null && index > 0){
             return false;
         }
+        //jeśli poprzedni to ogon to ogonem jest teraz nowy węzeł
         if (previous == tail){
             tail = node;
         }
+        //jeęli wstawiamy na początek to nową głowa jest teraz nowy węzeł
         if (index == 0){
             node.next = head;
             head = node;
             return true;
         }
+        //wstawienie nowego węzła za węzłem o indeksie index - 1
         StringNode temp = previous.next;
         previous.next = node;
         node.next = temp;
         return true;
     }
-
-
 
     public String get(int index){
         int count = 0;
