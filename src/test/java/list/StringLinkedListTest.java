@@ -105,4 +105,20 @@ class StringLinkedListTest {
         assertEquals("CCC", list.get(2));
         assertEquals("DDD", list.get(3));
     }
+
+    @Test
+    public void shouldReturnValidListAfterRemovingItemsFromList(){
+        StringLinkedList list = new StringLinkedList();
+        list.add("AAA",0);
+        list.add("BBB");
+        list.add("CCC");
+        list.add("DDD");
+        list.remove(0);
+        assertEquals("BBB", list.get(0));
+        list.remove(2);
+        assertEquals(null, list.get(2));
+        list.add("DDD");
+        assertEquals("DDD", list.get(2));
+
+    }
 }

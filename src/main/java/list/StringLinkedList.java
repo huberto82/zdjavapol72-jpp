@@ -45,15 +45,37 @@ public class StringLinkedList {
     }
 
     public boolean remove(int index){
-        if(index < 0){
+        //jeśli indeks ujemny lub lista pusta to usunięcie niemożliwe
+        if(index < 0 || isEmpty()){
             return false;
         }
+        //jeśli usunięcie głowy
         if (index == 0){
+            //jeśli lista jednoelementowa to zmień też ogon
+            if (head == tail){
+                tail = null;
+            }
+            //głowa to obecnie element następny za głową
             head = head.next;
             return true;
         }
+        //pobieramy poprzednik
         StringNode previous = getAt(index - 1);
+        //nie ma poprzednika, usunięcie niemozliwe
+        if (previous == null){
+            return false;
+        }
+        //pobieramy usuwany element
         StringNode removed = previous.next;
+        //jesli nie ma to usunięcie niemożliwe
+        if(removed == null){
+            return false;
+        }
+        //jeśli usuwamy ogon to, ogonem jest teraz jego poprzednik
+        if(removed == tail){
+            tail = previous;
+        }
+        //łączymy listę pomijając usuwany element
         previous.next = removed.next;
         return true;
     }
