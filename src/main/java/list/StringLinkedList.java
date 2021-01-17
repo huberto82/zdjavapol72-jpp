@@ -44,17 +44,26 @@ public class StringLinkedList {
         return true;
     }
 
-    public String get(int index){
-        int count = 0;
-        StringNode current = head;
-        while(current != null){
-            if(count == index){
-                return current.value;
-            }
-            count++;
-            current = current.next;
+    public boolean remove(int index){
+        if(index < 0){
+            return false;
         }
-        return null; //w przyszłości  nie będziemy zwracać null'i
+        if (index == 0){
+            head = head.next;
+            return true;
+        }
+        StringNode previous = getAt(index - 1);
+        StringNode removed = previous.next;
+        previous.next = removed.next;
+        return true;
+    }
+
+    public String get(int index){
+        StringNode node = getAt(index);
+        if(node == null){
+            return null;
+        }
+        return node.value; //w przyszłości nie będziemy zwracać null'i
     }
 
     public int size(){
