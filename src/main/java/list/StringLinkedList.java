@@ -25,6 +25,9 @@ public class StringLinkedList {
         if(previous == null && index > 0){
             return false;
         }
+        if (previous == tail){
+            tail = node;
+        }
         if (index == 0){
             node.next = head;
             head = node;
@@ -35,6 +38,8 @@ public class StringLinkedList {
         node.next = temp;
         return true;
     }
+
+
 
     public String get(int index){
         int count = 0;
