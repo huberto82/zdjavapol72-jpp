@@ -1,22 +1,26 @@
-package stack;
+package queue;
 
 import list.StringLinkedList;
 
-public class StringStack {
+//TODO samodzielnie napisz testy
+public class StringQueue {
     StringLinkedList list = new StringLinkedList();
 
-    public void push(String item) {
-        list.add(item, 0);
+    public void insert(String item){
+        list.add(item);
     }
 
-    public String pop() {
+    public String remove(){
         String item = list.get(0);
         list.remove(0);
         return item;
     }
 
-
     public boolean isEmpty(){
         return list.isEmpty();
+    }
+
+    public int size(){
+        return list.size();
     }
 }
