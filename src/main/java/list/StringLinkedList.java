@@ -114,4 +114,8 @@ public class StringLinkedList {
     public boolean isEmpty(){
         return head == null;
     }
+
+    public boolean isFull(){
+        return false;
+    }
 }
