@@ -11,10 +11,12 @@ public class QueueDemo {
         int count = 10;
         while (count-- > 0) {
             int c = 10 + random.nextInt(20);
+            //rejestracja chętnych na szczepienie
             for (int i = 0; i < c; i++) {
                 kolejkaSzczepien.insert(((char)('A' + random.nextInt(26))) + "" + ((char)('0'+random.nextInt(10))));
             }
             int k = 20 + random.nextInt(10);
+            //szczepimy zarejestrowanych
             for(int i = 0; i < k; i++){
                 if (!kolejkaSzczepien.isEmpty()) {
                     System.out.println("Osoba " + kolejkaSzczepien.remove() + " zaszczepiona!");
