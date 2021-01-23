@@ -11,12 +11,7 @@ import java.util.regex.Pattern;
 public class PhoneBook {
     static StringLinkedList phoneBook = new StringLinkedList();
     static Scanner SCANNER = new Scanner(System.in);
-    static Pattern phoneNumberPatter = Pattern.compile("\\d{3}-\\d{3}-\\d{3}");
 
-    static public boolean isValidPhoneNumber(String number){
-        Matcher phoneNumberMatcher = phoneNumberPatter.matcher(number);
-        return phoneNumberMatcher.matches();
-    }
 
     static public int menu(){
         System.out.println("1. Wyświetl wszystkie");
@@ -49,7 +44,7 @@ public class PhoneBook {
     public  static  void addPhoneNumber(){
         System.out.println("Wpisz nowy numer:");
         String item = SCANNER.nextLine();
-        if (isValidPhoneNumber(item)) {
+        if (PhoneNumber.isValidPhoneNumber(item)) {
             phoneBook.add(item);
             System.out.println("Numer poprawny został dodany");
         } else {
